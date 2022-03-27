@@ -1,5 +1,5 @@
 {
-  "name": "react-advanced-datetimerange-picker",
+  "name": "react-pro-datetimerange-picker",
   "version": "1.0.14",
   "license": "MIT",
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/v0ltoz/react-datetimepicker"
+    "url": "https://github.com/deepak-hp/react-pro-datetimerange-picker"
   },
   "jest": {
     "collectCoverageFrom": [
