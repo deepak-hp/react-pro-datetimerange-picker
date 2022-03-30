@@ -1,5 +1,5 @@
 # React Pro Date Time Range Picker
-[![CircleCI](https://circleci.com/gh/v0ltoz/react-datetimepicker.svg?style=svg)](https://circleci.com/gh/v0ltoz/react-datetimepicker)
+<!-- [![CircleCI](https://circleci.com/gh/v0ltoz/react-datetimepicker.svg?style=svg)](https://circleci.com/gh/v0ltoz/react-datetimepicker)
 [![](https://badge.fury.io/js/react-pro-datetimerange-picker.svg)](https://www.npmjs.com/package/react-pro-datetimerange-picker)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3b5c72752ef7cf3932b9/maintainability)](https://codeclimate.com/github/v0ltoz/react-datetimepicker/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/3b5c72752ef7cf3932b9/test_coverage)](https://codeclimate.com/github/v0ltoz/react-datetimepicker/test_coverage)
@@ -273,7 +273,7 @@ class Wrapper extends React.Component {
         }
 }
 ```
-
+ -->
 
 ## Available Scripts
 
