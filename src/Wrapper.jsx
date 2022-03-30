@@ -24,8 +24,8 @@ class Wrapper extends React.Component {
 
   applyCallback(startDate, endDate) {
     console.log('Apply Callback');
-    console.log(startDate.format('DD MMM YYYY, HH:mm A'));
-    console.log(endDate.format('DD MMM YYYY, HH:mm A'));
+    console.log(startDate.format('DD MMM YYYY, HH:mm'));
+    console.log(endDate.format('DD MMM YYYY, HH:mm'));
     this.setState({
       start: startDate,
       end: endDate,
@@ -44,7 +44,7 @@ class Wrapper extends React.Component {
   }
 
   renderVanillaPicker(ranges, local, maxDate) {
-    let value = `${this.state.start.format('DD MMM YYYY, HH:mm A')} - ${this.state.end.format('DD MMM YYYY, HH:mm A')}`;
+    let value = `${this.state.start.format('DD MMM YYYY, hh:mm A')} - ${this.state.end.format('DD MMM YYYY, hh:mm A')}`;
     let firefoxBelow35 = isFirefoxBelow53();
     let disabled = true;
     if (firefoxBelow35) {
@@ -571,7 +571,7 @@ class Wrapper extends React.Component {
       '1 Year': [moment(start).subtract(1, 'years'), moment(end)],
     };
     let local = {
-      format: 'DD MMM YYYY, HH:mm A',
+      format: 'DD MMM YYYY, hh:mm A',
       MondayFirst: true,
     };
     let maxDate = moment(end).add(24, 'hour');

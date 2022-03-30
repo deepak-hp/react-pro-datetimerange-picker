@@ -84,6 +84,9 @@
 .timeSelectContainer {
   margin : 8px;
   padding-block: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timeIconStyle {
@@ -275,4 +278,9 @@ select:focus {
   color: #FFFFFF !important;
   background-color: #3380FF !important;
   border-radius: 100px 0px 0px 100px !important;
+}
+
+.arrowSvg{
+  width: 1.25vw;
+  height: 1.25vh;
 }

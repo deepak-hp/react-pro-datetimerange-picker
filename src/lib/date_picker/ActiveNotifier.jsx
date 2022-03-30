@@ -16,7 +16,6 @@ class ActiveNotifier extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let selectingModeFrom = this.props.selectingModeFrom;
     let mode = this.props.mode;
     let startDotStyle =

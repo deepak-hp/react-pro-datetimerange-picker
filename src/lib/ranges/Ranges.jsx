@@ -66,7 +66,6 @@ class Ranges extends React.Component {
     // Map the range index and object name and value to a range button
     return (
       <div>
-        {console.log("range props: ", this.props)}
       {this.props.showRangeContainer && (
       <div className="rangecontainer" style={{ display: displayI }}>
         {Object.keys(this.props.ranges).map((range, i) => (

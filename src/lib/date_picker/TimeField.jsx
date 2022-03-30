@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes';
 import { generateHours, generateMinutes } from '../utils/TimeFunctionUtils';
 import {addFocusStyle, darkTheme, lightTheme} from '../utils/StyleUtils';
+import upArrow from "../svg/upArrow.svg"
+import downArrow from "../svg/downArrow.svg"
 
 class TimeField extends React.Component {
   constructor(props) {
@@ -67,26 +69,99 @@ class TimeField extends React.Component {
     else return hour;
   }
 
-  handleHourChange(event) {
-    this.props.timeChangeCallback(
-      this.props.twelveHoursClock
-        ? this.convertHourUsingMeridiem(parseInt(event.target.value), this.props.date.format('a'))
-        : parseInt(event.target.value),
-      this.props.date.minute(),
-      this.props.mode,
-    );
+  handleHourChange(event, arrow = "", valueInput) {
+    if(!arrow){
+      this.props.timeChangeCallback(
+        this.props.twelveHoursClock
+          ? this.convertHourUsingMeridiem(parseInt(event.target.value), this.props.date.format('a'))
+          : parseInt(event.target.value),
+        this.props.date.minute(),
+        this.props.mode,
+      );
+    } else{
+      let value;
+      const incomingValue = parseInt(valueInput)
+      if(this.props.twelveHoursClock){
+        if(arrow === "down"){
+          if(incomingValue <= 12 && incomingValue > 1){
+            value = incomingValue - 1;
+          }else if(incomingValue === 1){
+            value = 12;
+          }
+        } else{
+          if(incomingValue >= 1 && incomingValue < 12){
+            value = incomingValue + 1;
+          }else if(incomingValue === 12){
+            value = 1;
+          }
+        }
+      }else{
+        if(arrow === "down"){
+          if(incomingValue <= 23 && incomingValue > 0){
+            value = incomingValue - 1;
+          }else if(incomingValue === 0){
+            value = 23;
+          }
+        } else{
+          if(incomingValue >= 0 && incomingValue < 23){
+            value = incomingValue + 1;
+          }else if(incomingValue === 23){
+            value = 0;
+          }
+        }
+      }
+      this.props.timeChangeCallback(
+        this.props.twelveHoursClock
+          ? this.convertHourUsingMeridiem(value, this.props.date.format('a'))
+          : parseInt(value),
+        this.props.date.minute(),
+        this.props.mode,
+      );
+    }
+   
   }
 
-  handleMinuteChange(event) {
-    this.props.timeChangeCallback(this.props.date.hour(), parseInt(event.target.value), this.props.mode);
+  handleMinuteChange(event, arrow = "",valueInput) {
+    if(!arrow){
+      this.props.timeChangeCallback(this.props.date.hour(), parseInt(event.target.value), this.props.mode);
+    } else{
+      const hour = this.props.date.hour()
+      const incomingValue = parseInt(valueInput)
+      let value;
+      if(arrow === "down"){
+        if(incomingValue <= 59 && incomingValue >0)
+        value = incomingValue - 1
+        else if(incomingValue === 0){
+          value = 59
+        }
+      }else{
+        if(incomingValue >= 0 && incomingValue < 59)
+        value = incomingValue + 1
+        else if(incomingValue === 59){
+          value = 0
+        }
+      }
+      this.props.timeChangeCallback(hour, value, this.props.mode);
+    }
+    
   }
 
-  handleMeridiemChange(event) {
-    this.props.timeChangeCallback(
-      this.convertHourUsingMeridiem(parseInt(this.props.date.format('h')), event.target.value),
-      this.props.date.minute(),
-      this.props.mode,
-    );
+  handleMeridiemChange(event, arrow = "",valueInput) {
+    if(!arrow){
+      this.props.timeChangeCallback(
+        this.convertHourUsingMeridiem(parseInt(this.props.date.format('h')), event.target.value),
+        this.props.date.minute(),
+        this.props.mode,
+      );
+    } else{
+      let value = valueInput === "am" ? "pm" : "am"
+      this.props.timeChangeCallback(
+        this.convertHourUsingMeridiem(parseInt(this.props.date.format('h')), value),
+        this.props.date.minute(),
+        this.props.mode,
+      );
+    }
+    
   }
 
   hourFocus() {
@@ -107,10 +182,28 @@ class TimeField extends React.Component {
 
   renderSelectField(valueInput, onChangeInput, optionsInput, id) {
     let theme = this.props.darkMode ? darkTheme : lightTheme;
+
     return (
-      <select id={id + '_' + this.props.mode} style={theme} value={valueInput} onChange={onChangeInput}>
-        {optionsInput}
-      </select>
+      // <select id={id + '_' + this.props.mode} style={theme} value={valueInput} onChange={onChangeInput}>
+      //   {optionsInput}
+      // </select>
+      // <div>
+      //   <div onClick={(event)=>{onChangeInput(event, "up",valueInput)}}>up</div>
+      //   <input id={id + '_' + this.props.mode} style={theme} value={valueInput} onChange={(event)=>{onChangeInput(event)}}/>
+      //   <div onClick={(event)=>{onChangeInput(event, "down",valueInput)}}>down</div>
+      // </div>
+      <div>
+        <div onClick={(event)=>{onChangeInput(event,"up",valueInput)}}>
+        <img className='arrowSvg' src={upArrow} alt="down" />  
+        </div>
+        <select id={id + '_' + this.props.mode} style={theme} value={valueInput} onChange={onChangeInput}>
+          {optionsInput}
+        </select>
+        <div onClick={(event)=>{onChangeInput(event,"down",valueInput)}}>
+        <img className='arrowSvg' src={downArrow} alt="down" />
+        </div>
+      </div>
+      
     );
   }
 
