@@ -1,6 +1,6 @@
-# React Advanced  Date Time Range Picker
+# React Pro Date Time Range Picker
 [![CircleCI](https://circleci.com/gh/v0ltoz/react-datetimepicker.svg?style=svg)](https://circleci.com/gh/v0ltoz/react-datetimepicker)
-[![](https://badge.fury.io/js/react-advanced-datetimerange-picker.svg)](https://www.npmjs.com/package/react-advanced-datetimerange-picker)
+[![](https://badge.fury.io/js/react-pro-datetimerange-picker.svg)](https://www.npmjs.com/package/react-pro-datetimerange-picker)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3b5c72752ef7cf3932b9/maintainability)](https://codeclimate.com/github/v0ltoz/react-datetimepicker/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/3b5c72752ef7cf3932b9/test_coverage)](https://codeclimate.com/github/v0ltoz/react-datetimepicker/test_coverage)
 <br>
@@ -26,16 +26,16 @@ It has been designed currently to work with React Version 15
 
 The current version is compatible with Firefox 34+ and Chrome 40+ (May work but not widely tests on earlier versions)
 
-## Version 1.0.1 Release (30-06-19) -- Major Change
+<!-- ## Version 1.0.1 Release (30-06-19) -- Major Change
 
 With the release of this version comes a major change to the default vanilla behaviour of the date time picker. Default behaviour is now 
 non smart mode. Smart mode must be enabled via the use of the smart mode property. Also by default smart mode will be optimised for forward 
-searching. Use pastSearchFriendly to optimise for past searching.
+searching. Use pastSearchFriendly to optimise for past searching. -->
 
 ## Setup
 Run the following command:
 ```bash
-npm install react-advanced-datetimerange-picker
+npm install react-pro-datetimerange-picker
 ```
 
 ## Requirements
@@ -198,19 +198,19 @@ style={{
 }}
 ```
 
-**leftMode (optional)** {bool} <br>
+<!-- **leftMode (optional)** {bool} <br>
 Release Version: 1.0.6+ (BETA) <br>
 When set and changed the picker will open to the left (right to left) instead of the default which is to open to the right (left to right)
 
 **centerMode  (optional)** {bool} <br>
 Release Version: 1.0.14+ (BETA) <br>
-To allow flexibility, center mode has been added where leftMode or default is not enough.
+To allow flexibility, center mode has been added where leftMode or default is not enough. -->
 
 ## Getting Started
 
 ```js
 import React from 'react';
-import DateTimeRangeContainer from 'react-advanced-datetimerange-picker'
+import DateTimeRangeContainer from 'react-pro-datetimerange-picker'
 import {FormControl} from 'react-bootstrap'
 import moment from "moment"
 
