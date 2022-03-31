@@ -82,8 +82,6 @@
 }
 
 .timeSelectContainer {
-  margin : 8px;
-  padding-block: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -261,7 +259,7 @@ select:focus {
 
 .vSaperater{
   border-left: 0.5px solid #c2c2c2;
-  margin-bottom: 101px;
+  margin-bottom: 132px;
   margin-top: 45px;
 }
 
