@@ -193,13 +193,13 @@ class TimeField extends React.Component {
       //   <div onClick={(event)=>{onChangeInput(event, "down",valueInput)}}>down</div>
       // </div>
       <div>
-        <div onClick={(event)=>{onChangeInput(event,"up",valueInput)}}>
+        <div className='upArrow' onClick={(event)=>{onChangeInput(event,"up",valueInput)}}>
         <img className='arrowSvg' src={upArrow} alt="down" />  
         </div>
         <select id={id + '_' + this.props.mode} style={theme} value={valueInput} onChange={onChangeInput}>
           {optionsInput}
         </select>
-        <div onClick={(event)=>{onChangeInput(event,"down",valueInput)}}>
+        <div className='downArrow' onClick={(event)=>{onChangeInput(event,"down",valueInput)}}>
         <img className='arrowSvg' src={downArrow} alt="down" />
         </div>
       </div>
