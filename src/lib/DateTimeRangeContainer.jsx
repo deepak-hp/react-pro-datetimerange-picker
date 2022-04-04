@@ -203,7 +203,7 @@ class DateTimeRangeContainer extends React.Component {
 }
 
 DateTimeRangeContainer.propTypes = {
-  ranges: PropTypes.object.isRequired,
+  // ranges: PropTypes.object.isRequired,
   start: momentPropTypes.momentObj,
   end: momentPropTypes.momentObj,
   local: PropTypes.object.isRequired,

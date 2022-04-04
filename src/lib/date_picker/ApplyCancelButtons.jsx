@@ -182,7 +182,8 @@ class ApplyCancelButtons extends React.Component {
     );
     return (
       <Fragment>
-        {!this.props.standalone ? closeButton : null}
+        {/* {!this.props.standalone ? closeButton : null} */}
+        {closeButton}
         {applyButton}
       </Fragment>
     );
@@ -192,12 +193,12 @@ class ApplyCancelButtons extends React.Component {
     let maxDateBox = this.getMaxDateBox();
     let startEndDateTime = this.getStartEndDateTime();
     let buttons = this.renderButtons();
-    let style = undefined;
-    if(this.props.standalone){
-      style = {position:'unset', float:'right'};
-    }
+    // let style = undefined;
+    // if(this.props.standalone){
+    //   style = {position:'unset', float:'right'};
+    // }
     return (
-      <div id="buttonContainer" className="buttonContainer" style={style}>
+      <div id="buttonContainer" className="buttonContainer">
         {maxDateBox}
         {startEndDateTime}
         {buttons}

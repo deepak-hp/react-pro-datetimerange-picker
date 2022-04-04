@@ -1,5 +1,5 @@
 # React Pro Date Time Range Picker
-
+Docs will be update soon
 ## Available Scripts
 
 In the project directory, you can run:

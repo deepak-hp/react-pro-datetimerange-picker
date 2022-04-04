@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.datePickerComponent{
+  background-color: #ffffff;
+}
+
 .daterangepicker {
   position: absolute;
   display: flex;
@@ -17,6 +21,7 @@
   border: 1px solid rgba(0,0,0,0.15);
   background-clip: padding-box;
   box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  width: 590.8px;
 }
 
 .daterangepicker:before {

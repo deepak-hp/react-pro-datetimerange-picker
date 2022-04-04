@@ -68,6 +68,7 @@ class Wrapper extends React.Component {
           smartMode
           twelveHoursClock
           showActiveNotifier={false} // need to check this
+          standalone
           style={{
             fromDate: {
               color: '#FFFFFF',
@@ -633,6 +634,7 @@ class Wrapper extends React.Component {
             12 Hour Toggle
           </button>
         {pickers}
+        <div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
       </div>
     );
   }
