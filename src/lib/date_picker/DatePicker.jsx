@@ -19,6 +19,7 @@ class DatePicker extends React.Component {
         <ApplyCancelButtons
           changeVisibleState={this.props.changeVisibleState}
           applyCallback={this.props.applyCallback}
+          isVisibleCallback={this.props.isVisibleCallback}
           local={this.props.local}
           maxDate={this.props.maxDate}
           autoApply={this.props.autoApply}

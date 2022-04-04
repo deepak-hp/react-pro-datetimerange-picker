@@ -147,6 +147,7 @@ class DateTimeRangeContainer extends React.Component {
         local={this.props.local}
         applyCallback={this.props.applyCallback}
         rangeCallback={this.props.rangeCallback}
+        isVisibleCallback={this.props.isVisibleCallback}
         autoApply={this.props.autoApply}
         changeVisibleState={this.changeVisibleState}
         screenWidthToTheRight={this.state.screenWidthToTheRight}

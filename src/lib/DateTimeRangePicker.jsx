@@ -444,6 +444,7 @@ class DateTimeRangePicker extends React.Component {
         selectingModeFrom={this.state.selectingModeFrom}
         changeSelectingModeCallback={this.changeSelectingModeCallback}
         applyCallback={this.applyCallback}
+        isVisibleCallback={this.props.isVisibleCallback}
         maxDate={this.props.maxDate}
         showMaxDateLabel={this.props.showMaxDateLabel}
         local={this.props.local}
@@ -481,6 +482,7 @@ class DateTimeRangePicker extends React.Component {
         selectingModeFrom={this.state.selectingModeFrom}
         changeSelectingModeCallback={this.changeSelectingModeCallback}
         applyCallback={this.applyCallback}
+        isVisibleCallback={this.props.isVisibleCallback}
         maxDate={this.props.maxDate}
         showMaxDateLabel={this.props.showMaxDateLabel}
         local={this.props.local}

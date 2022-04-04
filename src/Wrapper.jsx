@@ -15,11 +15,13 @@ class Wrapper extends React.Component {
       start: start,
       end: end,
       timezone: "America/Los_Angeles",
-      secondDisplay: false
+      secondDisplay: false,
+      isVisible: true
     };
 
     this.onClick = this.onClick.bind(this);
     this.applyCallback = this.applyCallback.bind(this);
+    this.isVisibleCallback = this.isVisibleCallback.bind(this);
   }
 
   applyCallback(startDate, endDate) {
@@ -30,6 +32,12 @@ class Wrapper extends React.Component {
       start: startDate,
       end: endDate,
     });
+  }
+
+  isVisibleCallback(visible){
+    this.setState({
+      isVisible: visible
+    })
   }
 
   rangeCallback(index, value) {
@@ -65,6 +73,7 @@ class Wrapper extends React.Component {
           showMaxDateLabel={false} // to hide maxDateLabel
           applyCallback={this.applyCallback}
           rangeCallback={this.rangeCallback}
+          isVisibleCallback={this.isVisibleCallback}
           smartMode
           twelveHoursClock
           showActiveNotifier={false} // need to check this
@@ -87,10 +96,10 @@ class Wrapper extends React.Component {
               backgroundColor: '#3380FF',
               borderRadius: 'none',
             },
-            // standaloneLayout: { display: 'flex', maxWidth: 'fit-content' },
+             standaloneLayout: { display: 'flex', width: '580.8px' },
           }}
         >
-          <FormControl
+          {/* <FormControl
             id="formControlsTextB"
             type="text"
             label="Text"
@@ -98,7 +107,7 @@ class Wrapper extends React.Component {
             style={{ cursor: 'pointer' }}
             disabled={disabled}
             value={value}
-          />
+          /> */}
         </DateTimeRangeContainer>
         <br />
       </div>
@@ -604,7 +613,7 @@ class Wrapper extends React.Component {
     return (
       <div className="container">
         <h1>Welcome to the Advanced Date Time Picker Demo</h1>
-          <button id={'Reset-Toggle'} onClick={() => this.setState({
+          {/* <button id={'Reset-Toggle'} onClick={() => this.setState({
             secondDisplay: false,
             timezoneDisplay: false,
             twelveHour: true
@@ -632,7 +641,7 @@ class Wrapper extends React.Component {
             secondDisplay: false,
             })}>
             12 Hour Toggle
-          </button>
+          </button> */}
         {pickers}
         <div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
       </div>

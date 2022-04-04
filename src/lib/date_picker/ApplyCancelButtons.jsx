@@ -50,6 +50,7 @@ class ApplyCancelButtons extends React.Component {
 
   cancelPressed() {
     this.props.changeVisibleState();
+    this.props.isVisibleCallback(false)
   }
 
   applyPressed() {
@@ -88,6 +89,7 @@ class ApplyCancelButtons extends React.Component {
   cancelOnKeyPress(e) {
     if (this.isSpaceBarOrEnterPressed(e)) {
       this.props.changeVisibleState();
+      this.props.isVisibleCallback(false);
     }
   }
 
@@ -193,12 +195,12 @@ class ApplyCancelButtons extends React.Component {
     let maxDateBox = this.getMaxDateBox();
     let startEndDateTime = this.getStartEndDateTime();
     let buttons = this.renderButtons();
-    // let style = undefined;
-    // if(this.props.standalone){
-    //   style = {position:'unset', float:'right'};
-    // }
+    let style = undefined;
+    if(this.props.standalone){
+      style = {position:'unset', float:'right'};
+    }
     return (
-      <div id="buttonContainer" className="buttonContainer">
+      <div id="buttonContainer" className="buttonContainer" style={style}>
         {maxDateBox}
         {startEndDateTime}
         {buttons}
