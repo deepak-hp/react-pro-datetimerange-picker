@@ -274,6 +274,10 @@ select:focus {
   border-bottom: 0.5px solid #c2c2c2;
 }
 
+.standaloneNotifier{
+  border-bottom: 0.5px solid #c2c2c2;
+}
+
 .calenderRows{
   margin-top: 10px;
 }

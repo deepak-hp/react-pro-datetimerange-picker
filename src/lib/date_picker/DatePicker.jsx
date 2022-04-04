@@ -75,7 +75,7 @@ class DatePicker extends React.Component {
         />
       </div>
 
-      <div className='notifier'>
+      <div className={this.props.standalone ? 'standaloneNotifier' :'notifier'}>
       <ActiveNotifier
         showActiveNotifier={this.props.showActiveNotifier}
         selectingModeFrom={this.props.selectingModeFrom}
