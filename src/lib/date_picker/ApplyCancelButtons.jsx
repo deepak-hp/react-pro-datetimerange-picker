@@ -197,7 +197,7 @@ class ApplyCancelButtons extends React.Component {
     let buttons = this.renderButtons();
     let style = undefined;
     if(this.props.standalone){
-      style = {position:'unset', float:'right'};
+      style= this.props.style.standalonefooter;
     }
     return (
       <div id="buttonContainer" className="buttonContainer" style={style}>
@@ -216,5 +216,6 @@ ApplyCancelButtons.propTypes = {
   changeVisibleState: PropTypes.func.isRequired,
   autoApply: PropTypes.bool,
   standalone: PropTypes.bool,
+  style: PropTypes.object,
 };
 export default ApplyCancelButtons;

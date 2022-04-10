@@ -196,7 +196,7 @@ class TimeField extends React.Component {
         <div className='upArrow' onClick={(event)=>{onChangeInput(event,"up",valueInput)}}>
         <img className='arrowSvg' src={upArrow} alt="down" />  
         </div>
-        <select id={id + '_' + this.props.mode} style={theme} value={valueInput} onChange={onChangeInput}>
+        <select id={id + '_' + this.props.mode} className='timeSelect' style={theme} value={valueInput} onChange={onChangeInput}>
           {optionsInput}
         </select>
         <div className='downArrow' onClick={(event)=>{onChangeInput(event,"down",valueInput)}}>
@@ -227,7 +227,7 @@ class TimeField extends React.Component {
           <div className="multipleContentOnLine hour" onFocus={this.hourFocus} onBlur={this.hourBlur} style={hourFocusStyle}>
             {this.renderSelectField(hour, this.handleHourChange, hours, 'Hour')}
           </div>
-          <div className="multipleContentOnLine">:</div>
+          <div className="multipleContentOnLine delimiter">:</div>
           <div
             className="multipleContentOnLine minute"
             onFocus={this.minuteFocus}

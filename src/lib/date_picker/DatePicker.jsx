@@ -27,6 +27,7 @@ class DatePicker extends React.Component {
           startDate={this.props.otherDate}
           endDate={this.props.date}
           showMaxDateLabel={this.props.showMaxDateLabel}
+          style={this.props.style}
         />
       );
     }

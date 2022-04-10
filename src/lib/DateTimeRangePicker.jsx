@@ -515,7 +515,7 @@ class DateTimeRangePicker extends React.Component {
           forceMobileMode={this.props.forceMobileMode}
         />
         {this.renderStartDate(this.props.local)}
-        <div className='vSaperater'></div>
+        <div className='vSaperater' style={this.props.style.vSaperater}></div>
         {this.renderEndDate(this.props.local)}
       </Fragment>
     );

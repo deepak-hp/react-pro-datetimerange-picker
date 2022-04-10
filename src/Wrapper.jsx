@@ -97,6 +97,8 @@ class Wrapper extends React.Component {
               borderRadius: 'none',
             },
              standaloneLayout: { display: 'flex', width: '580.8px' },
+             standalonefooter: { position: "unset",float: "right",width: '164%'},
+             vSaperater:{marginBottom: '131px'}
           }}
         >
           {/* <FormControl

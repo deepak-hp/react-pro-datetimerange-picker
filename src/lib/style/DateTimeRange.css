@@ -104,7 +104,11 @@
   position: relative;
   display: inline;
   padding-inline: 1px;
-  font-size: 20px;
+  font-weight: 600;
+}
+
+.multipleContentOnLine.delimiter{
+  font-size: 28px;
 }
 
 .multipleContentOnLine.month {
@@ -211,6 +215,7 @@ select:focus {
   text-align: center;
   font-size: 14px;
   font-weight: 600;
+  width: 280px;
 }
 
 .calendarGridFirefoxBelow35 {
@@ -291,4 +296,11 @@ select:focus {
 .arrowSvg{
   width: 1.25vw;
   height: 1.25vh;
+}
+
+.timeSelect{
+  appearance: none;
+  border: none;
+  font-size: 28px;
+  font-weight: 600;
 }
