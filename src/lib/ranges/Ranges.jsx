@@ -92,7 +92,7 @@ class Ranges extends React.Component {
 }
 
 Ranges.propTypes = {
-  ranges: PropTypes.object.isRequired,
+  // ranges: PropTypes.object.isRequired,
   screenWidthToTheRight: PropTypes.number.isRequired,
   selectedRange: PropTypes.number.isRequired,
   rangeSelectedCallback: PropTypes.func.isRequired,
