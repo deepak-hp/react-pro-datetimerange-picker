@@ -21,7 +21,7 @@ class Wrapper extends React.Component {
 
     this.onClick = this.onClick.bind(this);
     this.applyCallback = this.applyCallback.bind(this);
-    this.isVisibleCallback = this.isVisibleCallback.bind(this);
+    this.cancelCallback = this.cancelCallback.bind(this);
   }
 
   applyCallback(startDate, endDate) {
@@ -34,7 +34,7 @@ class Wrapper extends React.Component {
     });
   }
 
-  isVisibleCallback(visible){
+  cancelCallback(visible){
     this.setState({
       isVisible: visible
     })
@@ -73,7 +73,7 @@ class Wrapper extends React.Component {
           showMaxDateLabel={false} // to hide maxDateLabel
           applyCallback={this.applyCallback}
           rangeCallback={this.rangeCallback}
-          isVisibleCallback={this.isVisibleCallback}
+          cancelCallback={this.cancelCallback}
           smartMode
           twelveHoursClock
           showActiveNotifier={false} // need to check this

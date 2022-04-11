@@ -50,7 +50,7 @@ class ApplyCancelButtons extends React.Component {
 
   cancelPressed() {
     this.props.changeVisibleState();
-    this.props.isVisibleCallback(false)
+    this.props.cancelCallback(false)
   }
 
   applyPressed() {
@@ -89,7 +89,7 @@ class ApplyCancelButtons extends React.Component {
   cancelOnKeyPress(e) {
     if (this.isSpaceBarOrEnterPressed(e)) {
       this.props.changeVisibleState();
-      this.props.isVisibleCallback(false);
+      this.props.cancelCallback(false);
     }
   }
 
