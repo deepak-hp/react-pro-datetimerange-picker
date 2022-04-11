@@ -295,8 +295,9 @@ select:focus {
 }
 
 .arrowSvg{
-  width: 1.25vw;
-  height: 1.25vh;
+  width: 7px;
+  height: 14px;
+  margin-bottom: 2px;
 }
 
 .timeSelect{
