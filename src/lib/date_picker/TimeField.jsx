@@ -29,7 +29,7 @@ class TimeField extends React.Component {
     for (let i = this.props.twelveHoursClock ? 1 : 0; i <= (this.props.twelveHoursClock ? 12 : 23); i++) {
       selectValues.push(
         <option key={i} value={i}>
-          {i}
+          {i < 10 ? `0${i}` : i}
         </option>,
       );
     }
