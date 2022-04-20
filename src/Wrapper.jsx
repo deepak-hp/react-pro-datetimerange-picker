@@ -584,7 +584,7 @@ class Wrapper extends React.Component {
     };
     let local = {
       format: 'DD MMM YYYY, hh:mm A',
-      MondayFirst: true,
+      sundayFirst: true,
     };
     let maxDate = moment(end).add(24, 'hour');
     let pickersRender = <div>
@@ -645,7 +645,6 @@ class Wrapper extends React.Component {
             12 Hour Toggle
           </button> */}
         {pickers}
-        <div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
       </div>
     );
   }

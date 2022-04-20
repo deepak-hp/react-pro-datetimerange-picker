@@ -138,7 +138,7 @@ class Calendar extends React.Component {
   render() {
     let months = this.createMonths(this.props.local);
     let years = createYears(this.props.years, this.props.descendingYears);
-    let headers = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+    let headers = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     let sundayFirst = false;
     if (this.props.local) {
       if (this.props.local.days) {
