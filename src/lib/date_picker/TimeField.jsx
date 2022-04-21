@@ -7,6 +7,7 @@ import { generateHours, generateMinutes } from '../utils/TimeFunctionUtils';
 import {addFocusStyle, darkTheme, lightTheme} from '../utils/StyleUtils';
 import upArrow from "../svg/upArrow.svg"
 import downArrow from "../svg/downArrow.svg"
+import OutsideAlerter from "../utils/OutsideAlerter"
 
 class TimeField extends React.Component {
   constructor(props) {
@@ -14,6 +15,9 @@ class TimeField extends React.Component {
     this.state = {
       hourFocus: false,
       minuteFocus: false,
+      hourModalVisible: false,
+      minuteModalVisible: false,
+      meridiemModalVisible: false,
     };
     this.handleHourChange = this.handleHourChange.bind(this);
     this.handleMinuteChange = this.handleMinuteChange.bind(this);
@@ -22,15 +26,17 @@ class TimeField extends React.Component {
     this.minuteFocus = this.minuteFocus.bind(this);
     this.hourBlur = this.hourBlur.bind(this);
     this.minuteBlur = this.minuteBlur.bind(this);
+    this.selectFromDropdown = this.selectFromDropdown.bind(this);
+    this.handleCloseModalStates = this.handleCloseModalStates.bind(this);
   }
 
   generateHourSelectValues() {
     let selectValues = [];
     for (let i = this.props.twelveHoursClock ? 1 : 0; i <= (this.props.twelveHoursClock ? 12 : 23); i++) {
       selectValues.push(
-        <option key={i} value={i}>
+        <div key={i} value={i}>
           {i < 10 ? `0${i}` : i}
-        </option>,
+        </div>,
       );
     }
     return selectValues;
@@ -41,9 +47,9 @@ class TimeField extends React.Component {
     let selectValues = [];
     for (let i = 0; i < minutes.length; i++) {
       selectValues.push(
-        <option key={i} value={i}>
+        <div key={i} value={i}>
           {minutes[i]}
-        </option>,
+        </div>,
       );
     }
     return selectValues;
@@ -51,12 +57,12 @@ class TimeField extends React.Component {
 
   generateMeridiemSelectValues() {
     let selectValues = [
-      <option key={'am'} value={'am'}>
+      <div key={'am'} value={'am'}>
         AM
-      </option>,
-      <option key={'pm'} value={'pm'}>
+      </div>,
+      <div key={'pm'} value={'pm'}>
         PM
-      </option>,
+      </div>,
     ];
 
     return selectValues;
@@ -69,12 +75,18 @@ class TimeField extends React.Component {
     else return hour;
   }
 
-  handleHourChange(event, arrow = "", valueInput) {
+  handleHourChange(event, arrow = "", valueInput, isDropDown = false) {
+    this.setState({hourModalVisible: false})
+      // ,minuteModalVisible:false,meridiemModalVisible: false})
+    // console.log("handleHourChange",event.target.getAttribute('value'));
     if(!arrow){
+      let value = isDropDown? event.target.getAttribute('value') : event.target.value
       this.props.timeChangeCallback(
         this.props.twelveHoursClock
-          ? this.convertHourUsingMeridiem(parseInt(event.target.value), this.props.date.format('a'))
-          : parseInt(event.target.value),
+          ? this.convertHourUsingMeridiem(
+            parseInt(value),
+            this.props.date.format('a'))
+          : parseInt(value),
         this.props.date.minute(),
         this.props.mode,
       );
@@ -121,9 +133,11 @@ class TimeField extends React.Component {
    
   }
 
-  handleMinuteChange(event, arrow = "",valueInput) {
+  handleMinuteChange(event, arrow = "", valueInput, isDropDown = false) {
+    this.setState({minuteModalVisible:false})
     if(!arrow){
-      this.props.timeChangeCallback(this.props.date.hour(), parseInt(event.target.value), this.props.mode);
+      let value = isDropDown? event.target.getAttribute('value') : event.target.value
+      this.props.timeChangeCallback(this.props.date.hour(), parseInt(value), this.props.mode);
     } else{
       const hour = this.props.date.hour()
       const incomingValue = parseInt(valueInput)
@@ -146,10 +160,12 @@ class TimeField extends React.Component {
     
   }
 
-  handleMeridiemChange(event, arrow = "",valueInput) {
+  handleMeridiemChange(event, arrow = "", valueInput, isDropDown = false) {
+    this.setState({meridiemModalVisible: false})
     if(!arrow){
+      let value = isDropDown? event.target.getAttribute('value') : event.target.value
       this.props.timeChangeCallback(
-        this.convertHourUsingMeridiem(parseInt(this.props.date.format('h')), event.target.value),
+        this.convertHourUsingMeridiem(parseInt(this.props.date.format('h')), value),
         this.props.date.minute(),
         this.props.mode,
       );
@@ -180,9 +196,49 @@ class TimeField extends React.Component {
     this.setState({ minuteFocus: false });
   }
 
+  handleCloseModalStates(){
+    this.setState({hourModalVisible: false,minuteModalVisible:false,meridiemModalVisible: false});
+  }
+
+  selectFromDropdown(event,id){
+    // this.setState({hourModalVisible: false,minuteModalVisible:false,meridiemModalVisible: false});
+    console.log("here!",event, id);
+    if(id === 'Hour'){
+      this.setState({hourModalVisible: true});
+      // if(this.state.hourModalVisible){
+      //   this.setState({hourModalVisible: false});
+      // }else{
+      //   this.setState({hourModalVisible: true,minuteModalVisible:false,meridiemModalVisible: false});
+      // }
+    } 
+    else if (id === 'Minutes'){
+      this.setState({minuteModalVisible:true});
+    }
+    else if (id === 'Meridiem'){
+      this.setState({meridiemModalVisible:true});
+    }
+  }
+
+  dropdownList(onChangeInput, optionsInput) {
+    return (
+      <OutsideAlerter handleCloseModalStates={this.handleCloseModalStates}>
+      <div className='dropdownModal'>
+        <div className='dropdownOptions'>
+        {optionsInput.map(option =>(
+        <div key={option.key} value={option.props.value} onClick={event=>onChangeInput(event,null,null,true)} className="dropdownOption">
+         {option.props.children}
+        </div>
+        ))}
+        </div>
+      </div> 
+      </OutsideAlerter>
+  )
+}
+
+
   renderSelectField(valueInput, onChangeInput, optionsInput, id) {
     let theme = this.props.darkMode ? darkTheme : lightTheme;
-
+    
     return (
       // <select id={id + '_' + this.props.mode} style={theme} value={valueInput} onChange={onChangeInput}>
       //   {optionsInput}
@@ -196,9 +252,12 @@ class TimeField extends React.Component {
         <div className='upArrow' onClick={(event)=>{onChangeInput(event,"up",valueInput)}}>
         <img className='arrowSvg' src={upArrow} alt="down" />  
         </div>
-        <select id={id + '_' + this.props.mode} className='timeSelect' style={theme} value={valueInput} onChange={onChangeInput}>
-          {optionsInput}
-        </select>
+        <div id={id + '_' + this.props.mode} className='timeSelect' style={theme} value={valueInput} onChange={onChangeInput}>
+          <div className='optionsInputList' onClick={(event)=>{this.selectFromDropdown(event,id)}}>
+            {optionsInput.find((option) => option.props.value === valueInput)}
+          </div>
+         {/* <div className='optionsInputList'>{optionsInput}</div>  */}
+        </div>
         <div className='downArrow' onClick={(event)=>{onChangeInput(event,"down",valueInput)}}>
         <img className='arrowSvg' src={downArrow} alt="down" />
         </div>
@@ -226,6 +285,7 @@ class TimeField extends React.Component {
         <div className="timeSelectContainer">
           <div className="multipleContentOnLine hour" onFocus={this.hourFocus} onBlur={this.hourBlur} style={hourFocusStyle}>
             {this.renderSelectField(hour, this.handleHourChange, hours, 'Hour')}
+            {this.state.hourModalVisible && this.dropdownList(this.handleHourChange, hours)}
           </div>
           <div className="multipleContentOnLine delimiter">:</div>
           <div
@@ -235,10 +295,12 @@ class TimeField extends React.Component {
             style={minuteFocusStyle}
           >
             {this.renderSelectField(minute, this.handleMinuteChange, minutes, 'Minutes')}
+            {this.state.minuteModalVisible && this.dropdownList(this.handleMinuteChange, minutes)}
           </div>
           {this.props.twelveHoursClock && (
             <div className="multipleContentOnLine meridiem">
               {this.renderSelectField(meridiem, this.handleMeridiemChange, meridiems, 'Meridiem')}
+              {this.state.meridiemModalVisible && this.dropdownList( this.handleMeridiemChange, meridiems)}
             </div>
           )}
         </div>
