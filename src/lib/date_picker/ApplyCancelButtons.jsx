@@ -159,7 +159,7 @@ class ApplyCancelButtons extends React.Component {
     let closeButtonText = (this.props.local && this.props.local.close) ? this.props.local.close : 'Close';
     if (!this.props.autoApply) {
       applyButton = this.renderButton(
-        'buttonSeperator applyButton',
+        'dtrButtonSeperator dtrApplyButton',
         this.mouseEnterApply,
         this.mouseLeaveApply,
         this.applyPressed,
@@ -172,7 +172,7 @@ class ApplyCancelButtons extends React.Component {
       closeButtonText = (this.props.local && this.props.local.cancel) ? this.props.local.cancel : 'Cancel';
     }
     let closeButton = this.renderButton(
-      'buttonSeperator cancelButton',
+      'dtrButtonSeperator dtrCancelButton',
       this.mouseEnterCancel,
       this.mouseLeaveCancel,
       this.cancelPressed,
@@ -200,7 +200,7 @@ class ApplyCancelButtons extends React.Component {
       style= this.props.style.standalonefooter;
     }
     return (
-      <div id="buttonContainer" className="buttonContainer" style={style}>
+      <div id="buttonContainer" className="dtrButtonContainer" style={style}>
         {maxDateBox}
         {startEndDateTime}
         {buttons}
