@@ -75,10 +75,14 @@ class Calendar extends React.Component {
     return months;
   }
 
-  changeMonthCallback(event) {
-    for (let i = 0; i < event.target.length; i++) {
-      if (event.target[i].value === event.target.value) {
-        this.setState({ month: i });
+  changeMonthCallback(event,isDropDown) {
+    if(isDropDown){
+      this.setState({month: parseInt(event.target.getAttribute('data'))})
+    }else{
+      for (let i = 0; i < event.target.length; i++) {
+        if (event.target[i].value === event.target.value) {
+          this.setState({ month: i });
+        }
       }
     }
   }
@@ -131,8 +135,12 @@ class Calendar extends React.Component {
     return { monthLocal, yearLocal };
   }
 
-  changeYearCallback(event) {
-    this.setState({ year: parseInt(event.target.value) });
+  changeYearCallback(event, isDropDown) {
+    if(isDropDown){
+      this.setState({ year: parseInt(event.target.getAttribute('value'))});
+    } else{
+      this.setState({ year: parseInt(event.target.value) });
+    }
   }
 
   render() {

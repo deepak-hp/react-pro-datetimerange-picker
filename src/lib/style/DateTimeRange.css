@@ -191,7 +191,7 @@ select:focus {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .leftChevron {
@@ -343,4 +343,64 @@ select:focus {
 .dropdownOption:active{
   background-color: rgb(51, 128, 255);
   color: white;
+}
+
+
+.monthYearDropdownModal{
+  position: absolute;
+
+}
+
+.monthYearDropdownOptions{
+  position: absolute;
+  top: 0;
+  left: -5px;
+  z-index: 299;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #bfbfbf;
+  background-color: white;
+  padding-top: 8px;
+  padding-bottom: 6px;
+  border-radius: 4px;
+  overflow-y: auto;
+  max-height: 200px;
+  box-shadow: 0 2px 5px 0 rgb(41 41 41 / 30%);
+}
+
+.monthYearDropdownOption{
+  cursor: pointer;
+  height: 30px;
+  width: 100%;
+  padding: 6.6px 13px 6.4px 11px;
+  font-size: 14px;
+}
+
+.monthYearDropdownOption:hover{
+  background-color: rgba(51,129,255,.1);
+}
+
+.monthYearDropdownOption:active{
+  background-color: rgb(51, 128, 255);
+  color: white;
+}
+
+.monthYearSelectedMonthContainer, .monthYearSelectedYearContainer{
+  display: flex;
+}
+
+.monthYearSelectedMonth, .monthYearSelectedYear{
+  font-size: 20px;
+}
+
+.monthYearSelectedMonthSvg, .monthYearSelectedYearSvg{
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.monthYearSelectedYearSvg{
+  flex-direction: column;
+  gap: 3px;
 }
