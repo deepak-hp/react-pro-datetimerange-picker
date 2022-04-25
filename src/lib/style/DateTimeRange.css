@@ -142,7 +142,7 @@ select:focus {
   width: 114%;
 }
 
-.buttonSeperator {
+.dtrButtonSeperator {
   padding-left: 5px;
   padding-right: 5px;
   display: flex;
@@ -151,17 +151,20 @@ select:focus {
 }
 
 .dtrApplyButton {
-  background-color: #1E4D99 !important;
-  color: #fff;
-  font-size: 12px;
+  background-color: #3380FF !important;
+  color: #ffffff;
   border-radius: 4px;
+  border: 1px solid #3380FF;
   padding: 3px 12px;
   cursor: pointer;
   text-transform: uppercase;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  line-height: 130%;
+}
+
+.dtrApplyButton:active{
+  background-color: #1E4D99 !important;
 }
 
 .dtrCancelButton {
@@ -173,12 +176,14 @@ select:focus {
   margin-right: 12px;
   border: 1px solid #3380FF;
   text-transform: uppercase;
-  width: 65px;
-  height: 22px;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  line-height: 130%;
+}
+
+.dtrCancelButton:active{
+  background-color: #1E4D99 !important;
+  color: #ffffff;
 }
 
 .maxDateLabel {
@@ -327,6 +332,12 @@ select:focus {
   overflow-y: auto;
   max-height: 200px;
   box-shadow: 0 2px 5px 0 rgb(41 41 41 / 30%);
+}
+
+@media only screen and (max-height:782px ){
+  .dropdownOptions{
+    top: -253px;
+  }
 }
 
 .dropdownOption{

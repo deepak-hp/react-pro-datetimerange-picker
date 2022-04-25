@@ -200,7 +200,7 @@ class ApplyCancelButtons extends React.Component {
       style= this.props.style.standalonefooter;
     }
     return (
-      <div id="buttonContainer" className="dtrButtonContainer" style={style}>
+      <div className="dtrButtonContainer" style={style}>
         {maxDateBox}
         {startEndDateTime}
         {buttons}
