@@ -336,7 +336,8 @@ select:focus {
 
 @media only screen and (max-height:782px ){
   .dropdownOptions{
-    top: -253px;
+    top: unset;
+    bottom: 55px;
   }
 }
 
